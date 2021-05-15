@@ -80,5 +80,15 @@ public class BuyerServiceImpl implements BuyerService {
 		
 		
 	}
+
+	@Override
+	public void deleteBuyer(String email) throws EkartException {
+		Buyer buyer = buyerRepository.findByEmail(email);
+		
+		if(buyer == null) 
+			throw new EkartException("Buyer Not Present");
+		else
+			buyerRepository.deleteByEmail(email);
+	}
 	
 }
