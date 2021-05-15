@@ -85,7 +85,7 @@ public class SellerServiceImpl  implements SellerService{
 			throw new EkartException("Seller Not Present");
 		}
 		else {
-			sellerRepository.deleteByEmail(email);
+			sellerRepository.delete(seller);
 		}
 		
 	}
