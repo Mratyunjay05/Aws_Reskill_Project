@@ -38,6 +38,7 @@ public class BuyerServiceImpl implements BuyerService {
 					buyerObject.setName(buyer.getName());
 					buyerObject.setEmail(buyer.getEmail());
 					buyerObject.setPhoneNumber(buyer.getPhoneNumber());
+					buyerObject.setPassword(buyer.getPassword());
 					buyerObject.setIsPrivileged(buyer.getIsPrivileged());
 					buyerObject.setRewardPoints(buyer.getRewardPoints());
 					buyerObject.setIsActive(buyer.getIsActive());
