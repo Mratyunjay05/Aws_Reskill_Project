@@ -75,6 +75,20 @@ public class SellerServiceImpl  implements SellerService{
 			
 		return sellerEntity.getName();
 	}
+
+
+
+	@Override
+	public void deleteSeller(String email) throws EkartException {
+		Seller seller = sellerRepository.findByEmail(email);
+		if(seller == null) {
+			throw new EkartException("Seller Not Present");
+		}
+		else {
+			sellerRepository.deleteByEmail(email);
+		}
+		
+	}
 	
 	
 

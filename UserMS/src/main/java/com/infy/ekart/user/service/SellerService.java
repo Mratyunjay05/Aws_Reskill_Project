@@ -7,4 +7,6 @@ public interface SellerService {
 	public SellerDTO loginSeller(String email, String password) throws EkartException;
 	
 	public String registerSeller(SellerDTO buyer) throws EkartException; 
+	
+	public void deleteSeller(String seller) throws EkartException;
 }
