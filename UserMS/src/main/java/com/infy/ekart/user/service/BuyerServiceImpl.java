@@ -88,8 +88,8 @@ public class BuyerServiceImpl implements BuyerService {
 		
 		if(buyer == null) 
 			throw new EkartException("Buyer Not Present");
-		else
-			buyerRepository.deleteByEmail(email);
+		
+		buyerRepository.delete(buyer);
 	}
 	
 }

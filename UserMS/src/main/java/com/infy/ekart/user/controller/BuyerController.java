@@ -1,9 +1,10 @@
 package com.infy.ekart.user.controller;
 
-//import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,8 +21,7 @@ public class BuyerController {
 	@Autowired
 	private BuyerService buyerService;
 	
-//	@Autowired
-//	private Environment environment;
+	
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public ResponseEntity<BuyerDTO> buyerLogin(@RequestBody BuyerDTO buyer) throws EkartException{
@@ -31,6 +31,28 @@ public class BuyerController {
 		
 	}
 	
+	@RequestMapping(value="/buyerRegister", method = RequestMethod.POST)
+	public ResponseEntity<String> buyerRegister(@RequestBody BuyerDTO buyer) throws EkartException{
+			
+		String buyerServ =  buyerService.registerBuyer(buyer);
+		
+		String sm = buyerServ + " successfully registered";
+		
+		
+		
+		return new ResponseEntity<>(sm, HttpStatus.OK);
+		
+	}
+	
+	@DeleteMapping(value="/buyerDelete/{email}")
+	public ResponseEntity<String> buyerDelete(@PathVariable String email) throws EkartException{
+		
+		buyerService.deleteBuyer(email);
+		
+		String sm = "buyer successfully deleted";
+		
+		return new ResponseEntity<>(sm, HttpStatus.OK); 
+	}
 	
 	
 }

@@ -7,6 +7,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Buyer {
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer buyerId;
