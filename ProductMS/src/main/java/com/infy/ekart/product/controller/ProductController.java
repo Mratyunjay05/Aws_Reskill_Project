@@ -21,7 +21,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@RequestMapping(value="/{productName}",method=RequestMethod.GET)
+	@RequestMapping(value="/product/{productName}",method=RequestMethod.GET)
 	public ResponseEntity<List<ProductDTO>> getProductsByName(@PathVariable String productName) throws ProductException{
 		
 		List<ProductDTO> productFromDB = productService.getProductsByName(productName);
@@ -30,7 +30,7 @@ public class ProductController {
 		
 	}
 	
-	@RequestMapping(value="/{category}",method=RequestMethod.GET)
+	@RequestMapping(value="/category/{category}",method=RequestMethod.GET)
 	public ResponseEntity<List<ProductDTO>> getProductsByCategory(@PathVariable String category) throws ProductException{
 		
 		List<ProductDTO> productFromDB = productService.getProductsByCategory(category);
