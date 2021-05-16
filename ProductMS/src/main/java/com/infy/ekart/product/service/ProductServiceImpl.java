@@ -50,5 +50,65 @@ public class ProductServiceImpl implements ProductService{
 		
 		return productDTOList;
 	}
+
+	@Override
+	public List<ProductDTO> getProductsByCategory(String category) throws ProductException {
+
+		List<Product> productFromDB = productRepository.findByCategory(category);
+		
+		if(productFromDB.isEmpty()) {
+			throw new ProductException("No product of this name present");
+		}
+		
+		List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
+		for(Product pd : productFromDB) {
+			ProductDTO dto = new ProductDTO();
+			dto.setProdId(pd.getProdId());
+			dto.setProductName(pd.getProductName());
+			dto.setPrice(pd.getPrice());
+			dto.setStock(pd.getStock());
+			dto.setDescription(pd.getDescription());
+			dto.setSellerId(pd.getSellerId());
+			dto.setCategory(pd.getCategory());
+			dto.setSubCategory(pd.getSubCategory());
+			dto.setProductRating(pd.getProductRating());
+			
+			productDTOList.add(dto);
+		}
+		
+
+		
+		return productDTOList;
+	}
+
+	@Override
+	public List<ProductDTO> getAllProducts() throws ProductException {
+		
+List<Product> productFromDB = (List<Product>) productRepository.findAll();
+		
+		if(productFromDB.isEmpty()) {
+			throw new ProductException("No product of this name present");
+		}
+		
+		List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
+		for(Product pd : productFromDB) {
+			ProductDTO dto = new ProductDTO();
+			dto.setProdId(pd.getProdId());
+			dto.setProductName(pd.getProductName());
+			dto.setPrice(pd.getPrice());
+			dto.setStock(pd.getStock());
+			dto.setDescription(pd.getDescription());
+			dto.setSellerId(pd.getSellerId());
+			dto.setCategory(pd.getCategory());
+			dto.setSubCategory(pd.getSubCategory());
+			dto.setProductRating(pd.getProductRating());
+			
+			productDTOList.add(dto);
+		}
+		
+
+		
+		return productDTOList;
+	}
 	
 }

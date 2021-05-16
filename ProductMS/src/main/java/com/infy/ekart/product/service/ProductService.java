@@ -9,4 +9,8 @@ public interface ProductService {
 
 	public List<ProductDTO> getProductsByName(String productName) throws ProductException ;
 	
+	public List<ProductDTO> getProductsByCategory(String category) throws ProductException ;
+	
+	public List<ProductDTO> getAllProducts() throws ProductException ;
+	
 }

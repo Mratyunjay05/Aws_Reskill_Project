@@ -30,4 +30,22 @@ public class ProductController {
 		
 	}
 	
+	@RequestMapping(value="/{category}",method=RequestMethod.GET)
+	public ResponseEntity<List<ProductDTO>> getProductsByCategory(@PathVariable String category) throws ProductException{
+		
+		List<ProductDTO> productFromDB = productService.getProductsByCategory(category);
+		
+		return new ResponseEntity<List<ProductDTO>>(productFromDB,HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping(value="/products",method=RequestMethod.GET)
+	public ResponseEntity<List<ProductDTO>> getAllProducts()  throws ProductException{
+		
+		List<ProductDTO> productFromDB = productService.getAllProducts();
+		
+		return new ResponseEntity<List<ProductDTO>>(productFromDB,HttpStatus.OK);
+		
+	}
+	
 }
