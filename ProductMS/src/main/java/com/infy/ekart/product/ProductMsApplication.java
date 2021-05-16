@@ -1,13 +1,13 @@
-package com.infy.ekart.user;
+package com.infy.ekart.product;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TestMsApplication {
+public class ProductMsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestMsApplication.class, args);
+		SpringApplication.run(ProductMsApplication.class, args);
 	}
 
 }
