@@ -6,6 +6,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import com.infy.ekart.product.dto.ProductDTO;
@@ -19,6 +20,9 @@ import com.infy.ekart.product.repository.ProductRepository;
 public class ProductServiceImpl implements ProductService{
 	
 	@Autowired
+	Environment env;
+	
+	@Autowired
 	private ProductRepository productRepository;
 
 	@Override
@@ -27,7 +31,8 @@ public class ProductServiceImpl implements ProductService{
 		List<Product> productFromDB = productRepository.findByProductName(productName);
 		
 		if(productFromDB.isEmpty()) {
-			throw new ProductException("No product of this name present");
+			//env.getProperty("Service.Product_Absent");
+			throw new ProductException("Service.Product_Absent");
 		}
 		
 		List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
