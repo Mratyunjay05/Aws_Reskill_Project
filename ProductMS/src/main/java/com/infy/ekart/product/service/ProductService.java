@@ -12,5 +12,7 @@ public interface ProductService {
 	public List<ProductDTO> getProductsByCategory(String category) throws ProductException ;
 	
 	public List<ProductDTO> getAllProducts() throws ProductException ;
+	
+	public List<ProductDTO> getProductById(Integer productId) throws ProductException ;
 		
 }

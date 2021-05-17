@@ -115,5 +115,35 @@ List<Product> productFromDB = (List<Product>) productRepository.findAll();
 		
 		return productDTOList;
 	}
+
+	@Override
+	public List<ProductDTO> getProductById(Integer productId) throws ProductException {
+List<Product> productFromDB = productRepository.findByProductId(productId);
+		
+		if(productFromDB.isEmpty()) {
+			//env.getProperty("Service.Product_Absent");
+		throw new ProductException("Service.Product_Absent");
+		}
+		
+		List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
+		for(Product pd : productFromDB) {
+			ProductDTO dto = new ProductDTO();
+			dto.setProdId(pd.getProdId());
+			dto.setProductName(pd.getProductName());
+			dto.setPrice(pd.getPrice());
+			dto.setStock(pd.getStock());
+			dto.setDescription(pd.getDescription());
+			dto.setSellerId(pd.getSellerId());
+			dto.setCategory(pd.getCategory());
+			dto.setSubCategory(pd.getSubCategory());
+			dto.setProductRating(pd.getProductRating());
+			
+			productDTOList.add(dto);
+		}
+		
+
+		
+		return productDTOList;
+	}
 	
 }
