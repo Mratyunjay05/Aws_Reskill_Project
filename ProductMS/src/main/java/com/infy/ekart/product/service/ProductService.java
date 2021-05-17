@@ -13,6 +13,6 @@ public interface ProductService {
 	
 	public List<ProductDTO> getAllProducts() throws ProductException ;
 	
-	public List<ProductDTO> getProductById(Integer productId) throws ProductException ;
+	public ProductDTO getProductById(Integer prodId) throws ProductException ;
 		
 }

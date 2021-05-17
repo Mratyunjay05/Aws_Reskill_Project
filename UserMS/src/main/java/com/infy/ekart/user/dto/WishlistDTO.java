@@ -1,18 +1,30 @@
 package com.infy.ekart.user.dto;
 
+import com.infy.ekart.user.entity.Wishlist;
+
 public class WishlistDTO {
 
-	private BuyerDTO buyerDTO;
+//	private BuyerDTO buyer;
 	
 	private Integer prodId;
+	
+	private Integer buyerId;
 
-	public BuyerDTO getBuyerId() {
-		return buyerDTO;
+	public Integer getBuyerId() {
+		return buyerId;
 	}
 
-	public void setBuyerId(BuyerDTO buyerDTO) {
-		this.buyerDTO = buyerDTO;
+	public void setBuyerId(Integer buyerId) {
+		this.buyerId = buyerId;
 	}
+
+//	public BuyerDTO getBuyer() {
+//		return buyer;
+//	}
+//
+//	public void setBuyer(BuyerDTO buyer) {
+//		this.buyer = buyer;
+//	}
 
 	public Integer getProdId() {
 		return prodId;
@@ -22,7 +34,15 @@ public class WishlistDTO {
 		this.prodId = prodId;
 	}
 	
-	
+//	public Wishlist createEntity() {
+//		
+//		Wishlist wish = new Wishlist();
+//		wish.setBuyerId(this.buyerId);
+//		wish.setProdId(this.prodId);
+//		
+//		return wish;
+//		
+//	}
 
 }
 

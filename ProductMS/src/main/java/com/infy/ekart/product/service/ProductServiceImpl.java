@@ -117,16 +117,14 @@ List<Product> productFromDB = (List<Product>) productRepository.findAll();
 	}
 
 	@Override
-	public List<ProductDTO> getProductById(Integer productId) throws ProductException {
-List<Product> productFromDB = productRepository.findByProductId(productId);
+	public ProductDTO getProductById(Integer prodId) throws ProductException {
+		Product pd = productRepository.findByProdId(prodId);
 		
-		if(productFromDB.isEmpty()) {
+		if(pd==null) {
 			//env.getProperty("Service.Product_Absent");
 		throw new ProductException("Service.Product_Absent");
 		}
 		
-		List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
-		for(Product pd : productFromDB) {
 			ProductDTO dto = new ProductDTO();
 			dto.setProdId(pd.getProdId());
 			dto.setProductName(pd.getProductName());
@@ -138,12 +136,10 @@ List<Product> productFromDB = productRepository.findByProductId(productId);
 			dto.setSubCategory(pd.getSubCategory());
 			dto.setProductRating(pd.getProductRating());
 			
-			productDTOList.add(dto);
-		}
 		
 
 		
-		return productDTOList;
+		return dto;
 	}
 	
 }
