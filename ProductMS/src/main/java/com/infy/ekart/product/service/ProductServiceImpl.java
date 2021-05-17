@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService{
 		
 		if(productFromDB.isEmpty()) {
 			//env.getProperty("Service.Product_Absent");
-			throw new ProductException("Service.Product_Absent");
+		throw new ProductException("Service.Product_Absent");
 		}
 		
 		List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
