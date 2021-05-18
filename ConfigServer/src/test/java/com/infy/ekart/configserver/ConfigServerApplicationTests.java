@@ -1,10 +1,10 @@
-package com.example.demo;
+package com.infy.ekart.configserver;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class ConfigServerApplicationTests {
 
 	@Test
 	void contextLoads() {
