@@ -14,5 +14,7 @@ public interface ProductService {
 	public List<ProductDTO> getAllProducts() throws ProductException ;
 	
 	public ProductDTO getProductById(Integer prodId) throws ProductException ;
+	
+	public String addProducts(ProductDTO productDTO) throws ProductException;
 		
 }

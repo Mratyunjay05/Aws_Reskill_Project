@@ -142,4 +142,23 @@ List<Product> productFromDB = (List<Product>) productRepository.findAll();
 		return dto;
 	}
 	
+	@Override
+	public String addProducts(ProductDTO productDTO) throws ProductException{
+		
+		Product productEntity = new Product();
+		productEntity.setProdId(productDTO.getProdId());
+		productEntity.setProductName(productDTO.getProductName());
+		productEntity.setPrice(productDTO.getPrice());
+		productEntity.setStock(productDTO.getStock());
+		productEntity.setDescription(productDTO.getDescription());
+		productEntity.setSellerId(productDTO.getSellerId());
+		productEntity.setCategory(productDTO.getCategory());
+		productEntity.setSubCategory(productDTO.getSubCategory());
+		productEntity.setProductRating(productDTO.getProductRating());
+		
+		productRepository.save(productEntity);
+		
+		return productEntity.getProductName();
+		
+	}
 }

@@ -1,7 +1,10 @@
 package com.infy.ekart.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
-
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.infy.ekart.user.dto.ProductDTO;
 import com.infy.ekart.user.dto.SellerDTO;
 import com.infy.ekart.user.exception.EkartException;
 import com.infy.ekart.user.service.SellerService;
@@ -54,5 +60,29 @@ public class SellerController {
 		
 		return new ResponseEntity<>(sm, HttpStatus.OK); 
 	}
+	
+	@RequestMapping(value="/sellerAddProduct", method = RequestMethod.POST)
+	public ResponseEntity<String> productAddedBySeller(@RequestBody ProductDTO product) throws EkartException, JsonProcessingException
+	{
+		RestTemplate restTemplate = new RestTemplate();
+
+        ObjectMapper Obj = new ObjectMapper();
+
+        String jsonStr = Obj.writeValueAsString(product);
+
+		
+		//String requestJson = "{\"prodId\" : 4,\"productName\" : \"Dell Inspiron\",\"price\" : 40000,\"stock\" : 3,\"description\" : \"it has good processor\",\"sellerId\" : 102,\"category\" : \"Electronics\",\"subCategory\" : \"Laptops\",\"productRating\" : 4}";
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+
+		HttpEntity<String> entity = new HttpEntity<String>(jsonStr,headers);
+
+		String sm = restTemplate.postForObject("http://localhost:8100/Product/productadd", entity, String.class);
+		
+		return new ResponseEntity<>(sm+" added successfuly", HttpStatus.OK);
+
+	}
+
 	
 }
