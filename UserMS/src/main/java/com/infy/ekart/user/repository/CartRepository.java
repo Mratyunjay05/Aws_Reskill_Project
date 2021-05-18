@@ -6,4 +6,7 @@ import com.infy.ekart.user.entity.Cart;
 
 public interface CartRepository  extends CrudRepository<Cart, Integer>{
 
+	public Cart findByProdId(Integer prodId);
+
+	
 }

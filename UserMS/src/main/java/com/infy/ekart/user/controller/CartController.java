@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +32,6 @@ public class CartController {
 		
 		String buyerServ =  cartService.addProduct(cartDTO);
 		String sm = "";
-		//String wishlistString = wishlistService.addProduct(wishlist);
 		
 		ProductDTO productDTO = new RestTemplate().getForObject("http://localhost:8100/Product/productid/"+cartDTO.getProdId(), ProductDTO.class);
 
@@ -44,6 +45,17 @@ public class CartController {
 		
 		return new ResponseEntity<>(sm, HttpStatus.OK);
 		
+	}
+	
+	@DeleteMapping(value = "/delete/{prodId}")
+	public ResponseEntity<String> deleteProductFromWishlist(@PathVariable Integer prodId) throws EkartException{
+		
+		cartService.deleteProduct(prodId);
+		
+		String sm = "product successfully deleted from";
+		
+		return new ResponseEntity<>(sm, HttpStatus.OK); 
+	
 	}
 
 }

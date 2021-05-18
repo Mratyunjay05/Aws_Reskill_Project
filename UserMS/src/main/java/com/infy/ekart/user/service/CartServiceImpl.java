@@ -37,5 +37,17 @@ public class CartServiceImpl implements CartService {
 		return "your Prouduct ";
 	
 	}
+	
+	@Override
+	public void deleteProduct(Integer prodId) throws EkartException {
+		
+		Cart cart = cartRepository.findByProdId(prodId);
+		
+		if(cart==null) {
+			throw new EkartException("product not present in cart");
+		}
+		
+		cartRepository.delete(cart);
+	}
 
 }

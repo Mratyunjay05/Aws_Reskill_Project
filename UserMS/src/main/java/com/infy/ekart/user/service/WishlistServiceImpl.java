@@ -39,5 +39,16 @@ public class WishlistServiceImpl implements WishlistService{
 		return "your product";
 	}
 	
+	@Override
+	public void deleteProduct(Integer prodId) throws EkartException {
+		
+		Wishlist wishlist = wishlistRepository.findByProdId(prodId);
+		
+		if(wishlist==null) {
+			throw new EkartException("product not present");
+		}
+		
+		wishlistRepository.delete(wishlist);
+	}
 
 }

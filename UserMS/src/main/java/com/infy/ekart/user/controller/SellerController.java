@@ -94,7 +94,7 @@ public class SellerController {
 		
 		if(productDTO!=null) {
 			restTemplate.delete("http://localhost:8100/Product//productdelete/"+productName);
-			sm = "Product added successfully";
+			sm = "Product deleted successfully";
 			
 		}
 		else {
