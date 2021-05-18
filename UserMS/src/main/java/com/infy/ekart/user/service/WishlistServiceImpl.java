@@ -5,7 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.infy.ekart.user.dto.BuyerDTO;
+
 import com.infy.ekart.user.dto.WishlistDTO;
 import com.infy.ekart.user.entity.Wishlist;
 import com.infy.ekart.user.exception.EkartException;
