@@ -7,7 +7,7 @@ import com.infy.ekart.product.exception.ProductException;
 
 public interface ProductService {
 
-	public List<ProductDTO> getProductsByName(String productName) throws ProductException ;
+	public ProductDTO getProductsByName(String productName) throws ProductException ;
 	
 	public List<ProductDTO> getProductsByCategory(String category) throws ProductException ;
 	

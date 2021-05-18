@@ -24,11 +24,11 @@ public class ProductController {
 	private ProductService productService;
 	
 	@RequestMapping(value="/product/{productName}",method=RequestMethod.GET)
-	public ResponseEntity<List<ProductDTO>> getProductsByName(@PathVariable String productName) throws ProductException{
+	public ResponseEntity<ProductDTO> getProductsByName(@PathVariable String productName) throws ProductException{
 		
-		List<ProductDTO> productFromDB = productService.getProductsByName(productName);
+		ProductDTO productFromDB = productService.getProductsByName(productName);
 		
-		return new ResponseEntity<List<ProductDTO>>(productFromDB,HttpStatus.OK);
+		return new ResponseEntity<ProductDTO>(productFromDB,HttpStatus.OK);
 		
 	}
 	
