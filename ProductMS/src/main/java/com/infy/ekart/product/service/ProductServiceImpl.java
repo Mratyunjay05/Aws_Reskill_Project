@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService{
 		throw new ProductException("Service.Product_Absent");
 		}
 		
-		ProductDTO productDTOList = new ProductDTO();
+		//ProductDTO productDTOList = new ProductDTO();
 		
 			ProductDTO dto = new ProductDTO();
 			dto.setProdId(productFromDB.getProdId());
@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService{
 		
 
 		
-		return productDTOList;
+		return dto;
 	}
 
 	@Override
