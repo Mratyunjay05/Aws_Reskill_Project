@@ -144,6 +144,9 @@ List<Product> productFromDB = (List<Product>) productRepository.findAll();
 	@Override
 	public String addProducts(ProductDTO productDTO) throws ProductException{
 		
+		if(productRepository.findByProductName(productDTO.getProductName()) !=null)
+			throw new ProductException("Buyer Already Exists");
+		
 		Product productEntity = new Product();
 		productEntity.setProdId(productDTO.getProdId());
 		productEntity.setProductName(productDTO.getProductName());
@@ -161,11 +164,16 @@ List<Product> productFromDB = (List<Product>) productRepository.findAll();
 		
 	}
 	
-//	@Override
-//	public String deleteProducts(String productName) throws ProductException{
-//		
-//		Product product = productRepository.findByProductName(productName);
-//		
-//	}
+	@Override
+	public void deleteProducts(String productName) throws ProductException{
+		
+		Product product = productRepository.findByProductName(productName);
+		
+		if(product == null) 
+			throw new ProductException("Buyer Not Present");
+		
+		productRepository.delete(product);
+		
+	}
 	
 }

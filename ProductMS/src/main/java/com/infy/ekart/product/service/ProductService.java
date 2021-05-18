@@ -16,5 +16,7 @@ public interface ProductService {
 	public ProductDTO getProductById(Integer prodId) throws ProductException ;
 	
 	public String addProducts(ProductDTO productDTO) throws ProductException;
+	
+	public void deleteProducts(String productName) throws ProductException;
 		
 }

@@ -71,6 +71,17 @@ public class ProductController {
 		
 	}
 	
+	@RequestMapping(value="/productdelete/{productName}",method=RequestMethod.DELETE)
+	public ResponseEntity<String> deleteProductBySeller(@PathVariable String productName) throws ProductException{
+		
+		productService.deleteProducts(productName);
+		
+		String sm = "product successfully deleted";
+		
+		return new ResponseEntity<>(sm, HttpStatus.OK); 
+		
+	}
+	
 	
 	
 }

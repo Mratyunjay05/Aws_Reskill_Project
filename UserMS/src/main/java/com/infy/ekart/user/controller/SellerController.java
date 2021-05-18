@@ -83,6 +83,29 @@ public class SellerController {
 		return new ResponseEntity<>(sm+" added successfuly", HttpStatus.OK);
 
 	}
+	
+	@RequestMapping(value="/sellerDeleteProduct/{productName}",method = RequestMethod.DELETE)
+	public ResponseEntity<String> productDeletedBySeller(@PathVariable String productName) throws EkartException {
+		
+		RestTemplate restTemplate = new RestTemplate();
+		String sm = "";
+
+		ProductDTO productDTO = restTemplate.getForObject("http://localhost:8100/Product/product/"+productName,ProductDTO.class);
+		
+		if(productDTO!=null) {
+			restTemplate.delete("http://localhost:8100/Product//productdelete/"+productName);
+			sm = "Product added successfully";
+			
+		}
+		else {
+			throw new EkartException("product does not exists");
+		}
+		
+		
+		return new ResponseEntity<>(sm, HttpStatus.OK);
+
+		
+	}
 
 	
 }
