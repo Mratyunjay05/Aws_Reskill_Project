@@ -31,28 +31,28 @@ public class ProductServiceImpl implements ProductService{
 		Product productFromDB = productRepository.findByProductName(productName);
 		
 		if(productFromDB==null) {
-			//env.getProperty("Service.Product_Absent");
-		throw new ProductException("Service.Product_Absent");
+			
+	       throw new ProductException("Product Does Not Exist");
 		}
 		
-		//ProductDTO productDTOList = new ProductDTO();
 		
-			ProductDTO dto = new ProductDTO();
-			dto.setProdId(productFromDB.getProdId());
-			dto.setProductName(productFromDB.getProductName());
-			dto.setPrice(productFromDB.getPrice());
-			dto.setStock(productFromDB.getStock());
-			dto.setDescription(productFromDB.getDescription());
-			dto.setSellerId(productFromDB.getSellerId());
-			dto.setCategory(productFromDB.getCategory());
-			dto.setSubCategory(productFromDB.getSubCategory());
-			dto.setProductRating(productFromDB.getProductRating());
+		
+			ProductDTO dtopro = new ProductDTO();
+			dtopro.setProdId(productFromDB.getProdId());
+			dtopro.setProductName(productFromDB.getProductName());
+			dtopro.setPrice(productFromDB.getPrice());
+			dtopro.setStock(productFromDB.getStock());
+			dtopro.setDescription(productFromDB.getDescription());
+			dtopro.setSellerId(productFromDB.getSellerId());
+			dtopro.setCategory(productFromDB.getCategory());
+			dtopro.setSubCategory(productFromDB.getSubCategory());
+			dtopro.setProductRating(productFromDB.getProductRating());
 			
 			
 		
 
 		
-		return dto;
+		return dtopro;
 	}
 
 	@Override
@@ -66,18 +66,18 @@ public class ProductServiceImpl implements ProductService{
 		
 		List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
 		for(Product pd : productFromDB) {
-			ProductDTO dto = new ProductDTO();
-			dto.setProdId(pd.getProdId());
-			dto.setProductName(pd.getProductName());
-			dto.setPrice(pd.getPrice());
-			dto.setStock(pd.getStock());
-			dto.setDescription(pd.getDescription());
-			dto.setSellerId(pd.getSellerId());
-			dto.setCategory(pd.getCategory());
-			dto.setSubCategory(pd.getSubCategory());
-			dto.setProductRating(pd.getProductRating());
+			ProductDTO prodto = new ProductDTO();
+			prodto.setProdId(pd.getProdId());
+			prodto.setProductName(pd.getProductName());
+			prodto.setPrice(pd.getPrice());
+			prodto.setStock(pd.getStock());
+			prodto.setDescription(pd.getDescription());
+			prodto.setSellerId(pd.getSellerId());
+			prodto.setCategory(pd.getCategory());
+			prodto.setSubCategory(pd.getSubCategory());
+			prodto.setProductRating(pd.getProductRating());
 			
-			productDTOList.add(dto);
+			productDTOList.add(prodto);
 		}
 		
 
@@ -94,25 +94,25 @@ List<Product> productFromDB = (List<Product>) productRepository.findAll();
 			throw new ProductException("No product of this name present");
 		}
 		
-		List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
+		List<ProductDTO> prodDTOList = new ArrayList<ProductDTO>();
 		for(Product pd : productFromDB) {
-			ProductDTO dto = new ProductDTO();
-			dto.setProdId(pd.getProdId());
-			dto.setProductName(pd.getProductName());
-			dto.setPrice(pd.getPrice());
-			dto.setStock(pd.getStock());
-			dto.setDescription(pd.getDescription());
-			dto.setSellerId(pd.getSellerId());
-			dto.setCategory(pd.getCategory());
-			dto.setSubCategory(pd.getSubCategory());
-			dto.setProductRating(pd.getProductRating());
+			ProductDTO pdto = new ProductDTO();
+			pdto.setProdId(pd.getProdId());
+			pdto.setProductName(pd.getProductName());
+			pdto.setPrice(pd.getPrice());
+			pdto.setStock(pd.getStock());
+			pdto.setDescription(pd.getDescription());
+			pdto.setSellerId(pd.getSellerId());
+			pdto.setCategory(pd.getCategory());
+			pdto.setSubCategory(pd.getSubCategory());
+			pdto.setProductRating(pd.getProductRating());
 			
-			productDTOList.add(dto);
+			prodDTOList.add(pdto);
 		}
 		
 
 		
-		return productDTOList;
+		return prodDTOList;
 	}
 
 	@Override
@@ -120,7 +120,7 @@ List<Product> productFromDB = (List<Product>) productRepository.findAll();
 		Product pd = productRepository.findByProdId(prodId);
 		
 		if(pd==null) {
-			//env.getProperty("Service.Product_Absent");
+			
 		throw new ProductException("Service.Product_Absent");
 		}
 		

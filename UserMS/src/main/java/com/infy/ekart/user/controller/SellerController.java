@@ -43,11 +43,11 @@ public class SellerController {
 			
 		String sellerServ =  sellerService.registerSeller(seller);
 		
-		String sm = sellerServ + " successfully registered";
+		String mess = sellerServ + " successfully registered";
 		
 		
 		
-		return new ResponseEntity<>(sm, HttpStatus.OK);
+		return new ResponseEntity<>(mess, HttpStatus.OK);
 		
 	}
 	
@@ -70,9 +70,6 @@ public class SellerController {
 
         String jsonStr = Obj.writeValueAsString(product);
 
-		
-		//String requestJson = "{\"prodId\" : 4,\"productName\" : \"Dell Inspiron\",\"price\" : 40000,\"stock\" : 3,\"description\" : \"it has good processor\",\"sellerId\" : 102,\"category\" : \"Electronics\",\"subCategory\" : \"Laptops\",\"productRating\" : 4}";
-		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 
@@ -88,13 +85,13 @@ public class SellerController {
 	public ResponseEntity<String> productDeletedBySeller(@PathVariable String productName) throws EkartException {
 		
 		RestTemplate restTemplate = new RestTemplate();
-		String sm = "";
+		String message = "";
 
 		ProductDTO productDTO = restTemplate.getForObject("http://localhost:8100/Product/product/"+productName,ProductDTO.class);
 		
 		if(productDTO!=null) {
 			restTemplate.delete("http://localhost:8100/Product//productdelete/"+productName);
-			sm = "Product deleted successfully";
+			message = "Product deleted successfully";
 			
 		}
 		else {
@@ -102,7 +99,7 @@ public class SellerController {
 		}
 		
 		
-		return new ResponseEntity<>(sm, HttpStatus.OK);
+		return new ResponseEntity<>(message, HttpStatus.OK);
 
 		
 	}
