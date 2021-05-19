@@ -92,4 +92,29 @@ public class BuyerServiceImpl implements BuyerService {
 		buyerRepository.delete(buyer);
 	}
 	
+	@Override
+	public BuyerDTO getBuyerById(Integer buyerId) throws EkartException {
+		
+		Buyer by = buyerRepository.findByBuyerId(buyerId);
+		
+		if(by==null) {
+		throw new EkartException("Service.Product_Absent");
+		}
+		
+		BuyerDTO buyerDTO = new BuyerDTO();
+		
+		buyerDTO.setBuyerId(by.getBuyerId());
+		buyerDTO.setName(by.getName());
+		buyerDTO.setEmail(by.getEmail());
+		buyerDTO.setPhoneNumber(by.getPhoneNumber());
+		buyerDTO.setPassword(by.getPassword());
+		buyerDTO.setIsPrivileged(by.getIsPrivileged());
+		buyerDTO.setRewardPoints(by.getRewardPoints());
+		buyerDTO.setIsActive(by.getIsActive());
+		
+		return buyerDTO;
+		
+		
+	}
+	
 }

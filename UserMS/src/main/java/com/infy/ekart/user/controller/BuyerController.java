@@ -54,5 +54,14 @@ public class BuyerController {
 		return new ResponseEntity<>(sm, HttpStatus.OK); 
 	}
 	
+	@RequestMapping(value="/findBuyerById/{buyerId}",method = RequestMethod.GET)
+	public ResponseEntity<BuyerDTO> buyerFindById(@PathVariable Integer buyerId) throws EkartException{
+		
+		BuyerDTO buyerFromDB = buyerService.getBuyerById(buyerId);
+		
+		return new ResponseEntity<BuyerDTO>(buyerFromDB,HttpStatus.OK);
+		
+	}
+	
 	
 }

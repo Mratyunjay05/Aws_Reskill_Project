@@ -1,22 +1,28 @@
-package com.infy.ekart.user.entity;
+package com.infy.ekart.product.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
-import javax.persistence.Table;
-
-
 
 @Entity
-@Table(name="wishlist")
-@IdClass(WishlistId.class)
-public class Wishlist {
-	
+@IdClass(SubscribedProductId.class)
+public class SubscribedProduct {
 
 	@Id
-	private Integer prodId;
-	@Id
 	private Integer buyerId;
+	
+	@Id
+	private Integer prodId;
+	
+	private Integer quantity;
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 
 	public Integer getBuyerId() {
 		return buyerId;
@@ -26,14 +32,12 @@ public class Wishlist {
 		this.buyerId = buyerId;
 	}
 
-
 	public Integer getProdId() {
 		return prodId;
 	}
 
 	public void setProdId(Integer prodId) {
 		this.prodId = prodId;
-	}
-	
+	}		
 	
 }

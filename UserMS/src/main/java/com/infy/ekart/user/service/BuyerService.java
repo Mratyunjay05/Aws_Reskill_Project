@@ -9,4 +9,6 @@ public interface BuyerService {
 	public String registerBuyer(BuyerDTO buyer) throws EkartException; 
 	
 	public void deleteBuyer(String email) throws EkartException;
+	
+	public BuyerDTO getBuyerById(Integer buyerId) throws EkartException;
 }
