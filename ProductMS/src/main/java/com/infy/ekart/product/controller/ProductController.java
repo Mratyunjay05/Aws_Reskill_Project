@@ -64,7 +64,7 @@ public class ProductController {
 		
 		String productServ = productService.addProducts(product);
 		
-		String sm = productServ + " successfully added";
+		String sm = productServ + " Successfully Added ";
 		
 		return new ResponseEntity<>(sm, HttpStatus.OK);
 
@@ -76,7 +76,7 @@ public class ProductController {
 		
 		productService.deleteProducts(productName);
 		
-		String sm = "product successfully deleted";
+		String sm = "Product Successfully Dseleted";
 		
 		return new ResponseEntity<>(sm, HttpStatus.OK); 
 		

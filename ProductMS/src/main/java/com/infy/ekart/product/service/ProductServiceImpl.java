@@ -91,7 +91,7 @@ public class ProductServiceImpl implements ProductService{
 List<Product> productFromDB = (List<Product>) productRepository.findAll();
 		
 		if(productFromDB.isEmpty()) {
-			throw new ProductException("No product of this name present");
+			throw new ProductException("No Product Present In The Stock");
 		}
 		
 		List<ProductDTO> prodDTOList = new ArrayList<ProductDTO>();
@@ -121,7 +121,7 @@ List<Product> productFromDB = (List<Product>) productRepository.findAll();
 		
 		if(pd==null) {
 			
-		throw new ProductException("Service.Product_Absent");
+		throw new ProductException("Product with Product Id - "+prodId+" Not Present");
 		}
 		
 			ProductDTO dto = new ProductDTO();
@@ -145,7 +145,7 @@ List<Product> productFromDB = (List<Product>) productRepository.findAll();
 	public String addProducts(ProductDTO productDTO) throws ProductException{
 		
 		if(productRepository.findByProductName(productDTO.getProductName()) !=null)
-			throw new ProductException("Buyer Already Exists");
+			throw new ProductException(" Product Already Exists");
 		
 		Product productEntity = new Product();
 		productEntity.setProdId(productDTO.getProdId());

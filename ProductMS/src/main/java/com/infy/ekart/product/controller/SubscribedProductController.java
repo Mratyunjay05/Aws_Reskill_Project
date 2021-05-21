@@ -31,10 +31,10 @@ public class SubscribedProductController {
 		BuyerDTO buyerDTO = restTemplate.getForObject("http://localhost:8000/Buyer/findBuyerById/"+subscription.getBuyerId(), BuyerDTO.class);
 		
 		if(buyerDTO!=null && buyerDTO.getIsPrivileged()==true) {
-			sm = subServ  + "successfully";
+			sm = subServ  + " Successfully";
 		}
 		else {
-			throw new ProductException("Buyer has no no privilege access");
+			throw new ProductException("Buyer has no privilege access");
 		}
 		
 		return new ResponseEntity<>(sm, HttpStatus.OK);
