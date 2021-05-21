@@ -48,12 +48,12 @@ public class WishlistController {
 		
 	}
 
-	@DeleteMapping(value = "/delete/{prodId}")
-	public ResponseEntity<String> deleteProductFromWishlist(@PathVariable Integer prodId) throws EkartException{
+	@DeleteMapping(value = "/delete")
+	public ResponseEntity<String> deleteProductFromWishlist(@RequestBody WishlistDTO wishlist) throws EkartException{
 		
-		wishlistService.deleteProduct(prodId);
+		wishlistService.deleteProduct(wishlist.getBuyerId(),wishlist.getProdId());
 		
-		String sm = "product successfully deleted from";
+		String sm = "product successfully deleted from wishlist";
 		
 		return new ResponseEntity<>(sm, HttpStatus.OK); 
 	

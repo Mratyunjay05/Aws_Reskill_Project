@@ -33,6 +33,7 @@ public class WishlistServiceImpl implements WishlistService{
 		}
 		
 		wishlistEntity.setProdId(wishlist.getProdId());
+		wishlistEntity.setBuyerId(wishlist.getBuyerId());
 		
 		wishlistRepository.save(wishlistEntity);
 		
@@ -40,9 +41,9 @@ public class WishlistServiceImpl implements WishlistService{
 	}
 	
 	@Override
-	public void deleteProduct(Integer prodId) throws EkartException {
+	public void deleteProduct(Integer buyerId,Integer prodId) throws EkartException {
 		
-		Wishlist wishlist = wishlistRepository.findByProdId(prodId);
+		Wishlist wishlist = wishlistRepository.findByBuyerIdAndProdId(buyerId,prodId);
 		
 		if(wishlist==null) {
 			throw new EkartException("product not present");

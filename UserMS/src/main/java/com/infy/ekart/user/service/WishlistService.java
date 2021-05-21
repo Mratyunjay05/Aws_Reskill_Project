@@ -7,6 +7,6 @@ public interface WishlistService {
 
 	public String addProduct(WishlistDTO wishlist) throws EkartException;
 	
-	public void deleteProduct(Integer prodId) throws EkartException;
+	public void deleteProduct(Integer buyerId,Integer prodId) throws EkartException;
 	
 }
